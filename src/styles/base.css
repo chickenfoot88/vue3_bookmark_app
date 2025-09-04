@@ -1,0 +1,24 @@
+:root {
+  --color-bg: #ffffff;
+  --color-fg: #1c1c1c;
+  --color-inactive: #1c1c1c66;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothins: grayscale;
+}
