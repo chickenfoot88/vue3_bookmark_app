@@ -1,21 +1,13 @@
 <template>
   <div class="app">
     <nav class="nav">
-      <ProfileAvatar v-if="store.profile" :name="store.profile.name" />
+      <ProfileAvatar />
     </nav>
     <main>Контент</main>
   </div>
 </template>
 <script setup lang="ts">
 import ProfileAvatar from '@/components/ProfileAvatar.vue'
-import { onMounted } from 'vue'
-import { useProfileStore } from './store/profile.store'
-
-const store = useProfileStore()
-
-onMounted(() => {
-  store.getProfile()
-})
 </script>
 <style scoped>
 .app {
