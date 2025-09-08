@@ -2,13 +2,13 @@
   <div class="profile-avatar">
     <img src="/public/avatar.png" alt="Изображение пользователя" class="profile-avatar-image" />
     <div>
-      Привет, <strong>{{ userName }}</strong>
+      Привет, <strong>{{ name }}</strong>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const { userName } = defineProps<{ userName: string }>()
+const { name } = defineProps<{ name: string }>()
 // defineEmits<>()
 </script>
 
