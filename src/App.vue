@@ -10,7 +10,7 @@
 import ProfileAvatar from '@/components/ProfileAvatar.vue'
 import { ref, onMounted } from 'vue'
 import { API_ROUTES } from './api'
-import type { IProfile } from './interfaces/profile'
+import type { IProfile } from './interfaces/profile.interface'
 
 const profile = ref<IProfile>()
 
