@@ -1,23 +1,24 @@
 <template>
   <div class="app">
     <nav class="nav">
-      <ProfileAvatar v-if="profile" :name="profile.name" />
+      <ProfileAvatar v-if="store.profile" :name="store.profile.name" />
     </nav>
     <main>Контент</main>
   </div>
 </template>
 <script setup lang="ts">
 import ProfileAvatar from '@/components/ProfileAvatar.vue'
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { API_ROUTES } from './api'
+import { useProfileStore } from './store/profile.store'
 import type { IProfile } from './interfaces/profile.interface'
 
-const profile = ref<IProfile>()
+const store = useProfileStore()
 
 async function getProfile() {
   const data = await fetch(API_ROUTES.profile)
   const result = (await data.json()) as IProfile
-  profile.value = result
+  store.profile = result
 }
 
 onMounted(() => {
