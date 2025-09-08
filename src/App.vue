@@ -9,20 +9,12 @@
 <script setup lang="ts">
 import ProfileAvatar from '@/components/ProfileAvatar.vue'
 import { onMounted } from 'vue'
-import { API_ROUTES } from './api'
 import { useProfileStore } from './store/profile.store'
-import type { IProfile } from './interfaces/profile.interface'
 
 const store = useProfileStore()
 
-async function getProfile() {
-  const data = await fetch(API_ROUTES.profile)
-  const result = (await data.json()) as IProfile
-  store.profile = result
-}
-
 onMounted(() => {
-  getProfile()
+  store.getProfile()
 })
 </script>
 <style scoped>
