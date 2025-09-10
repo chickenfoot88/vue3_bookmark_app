@@ -1,12 +1,16 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="app">
-    <nav>Меню</nav>
+    <nav class="nav">
+      <ProfileAvatar />
+      <CategoryList />
+    </nav>
     <main>Контент</main>
   </div>
 </template>
-
+<script setup lang="ts">
+import ProfileAvatar from '@/components/ProfileAvatar.vue'
+import CategoryList from '@/components/CategoryList.vue'
+</script>
 <style scoped>
 .app {
   display: flex;
