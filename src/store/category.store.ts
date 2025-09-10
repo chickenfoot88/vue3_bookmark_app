@@ -7,7 +7,7 @@ export const useCategoryStore = defineStore('category', () => {
   const categories = ref<ICategory[]>([])
 
   async function getCategories() {
-    const { data } = await http.get(API_ROUTES.categories)
+    const { data } = await http.get<ICategory[]>(API_ROUTES.categories)
     categories.value = data
   }
 
