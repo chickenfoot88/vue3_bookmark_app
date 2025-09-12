@@ -1,7 +1,7 @@
 <template>
   <ul v-if="store.categories.length" class="category-list">
     <li class="category-list-item" v-for="category in store.categories" :key="category.id">
-      <a :href="`/${category.alias}`">{{ category }}</a>
+      <RouterLink :to="`/main/${category.alias}`">{{ category }}</RouterLink>
     </li>
   </ul>
 </template>
