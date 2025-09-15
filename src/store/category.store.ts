@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { ICategory } from '@/interfaces/category.interface'
 import { API_ROUTES, http } from '@/api'
+import { v4 as uuidv4 } from 'uuid'
 
 export const useCategoryStore = defineStore('category', () => {
   const categories = ref<ICategory[]>([])
@@ -11,5 +12,12 @@ export const useCategoryStore = defineStore('category', () => {
     categories.value = data
   }
 
-  return { categories, getCategories }
+  async function createCategory() {
+    const { data } = await http.post<ICategory>(API_ROUTES.categories, {
+      name: 'Новая категория',
+      alias: uuidv4(),
+    })
+    categories.value.push(data)
+  }
+  return { categories, getCategories, createCategory }
 })
