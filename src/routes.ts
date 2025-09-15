@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AuthView from '@/views/AuthView.vue'
-import MainView from '@/views/MainView.vue'
 
 export const router = createRouter({
   routes: [
@@ -11,11 +10,11 @@ export const router = createRouter({
     {
       path: '/main',
       name: 'main',
-      component: MainView,
+      component: () => import('@/views/MainView.vue'),
       children: [
         {
           path: '',
-          component: MainView,
+          component: () => import('@/views/MainView.vue'),
         },
       ],
     },
