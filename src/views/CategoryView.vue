@@ -2,31 +2,28 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRoute, onBeforeRouteUpdate } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useCategoryStore } from '@/store/category.store'
 import { watch } from 'vue'
 import type { ICategory } from '@/interfaces/category.interface'
-
+import { useBookmarkStore } from '@/store/bookmark.store'
 const route = useRoute()
-const store = useCategoryStore()
+const categoryStore = useCategoryStore()
 const category = ref<ICategory>()
-
-onBeforeRouteUpdate((to) => {
-  setCategoryByAlias(to.params.alias)
-})
+const bookmarkStore = useBookmarkStore()
 
 watch(
   () => ({
-    categories: store.categories,
+    alias: route.params.alias,
+    categories: categoryStore.categories,
   }),
-  () => {
-    setCategoryByAlias(route.params.alias)
+  (data) => {
+    category.value = categoryStore.getCategoryByAlias(data.alias)
+    if (category.value) {
+      bookmarkStore.getBookmarks(category.value.id)
+    }
   }
 )
-
-function setCategoryByAlias(alias: string | string[]): void {
-  category.value = store.getCategoryByAlias(alias)
-}
 </script>
 
 <style scoped></style>
