@@ -4,6 +4,11 @@ import AuthView from '@/views/AuthView.vue'
 export const router = createRouter({
   routes: [
     {
+      path: '/:pathMatch(.*)*',
+      component: import('@/views/NotFoundView.vue'),
+      name: 'notFound',
+    },
+    {
       path: '/',
       component: AuthView,
     },
