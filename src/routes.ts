@@ -9,12 +9,16 @@ export const router = createRouter({
     },
     {
       path: '/main',
-      name: 'main',
       component: () => import('@/views/MainView.vue'),
       children: [
         {
           path: '',
-          component: () => import('@/views/MainView.vue'),
+          component: () => import('@/views/IndexView.vue'),
+          name: 'main',
+        },
+        {
+          path: ':alias',
+          component: () => import('@/views/CategoryView.vue'),
         },
       ],
     },

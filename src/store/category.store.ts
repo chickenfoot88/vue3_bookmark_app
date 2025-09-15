@@ -19,5 +19,14 @@ export const useCategoryStore = defineStore('category', () => {
     })
     categories.value.push(data)
   }
-  return { categories, getCategories, createCategory }
+
+  function getCategoryByAlias(alias: string | string[]): ICategory | undefined {
+    if (typeof alias === 'string') {
+      return categories.value.find((category) => category.alias === alias)
+    }
+
+    return
+  }
+
+  return { categories, getCategories, createCategory, getCategoryByAlias }
 })

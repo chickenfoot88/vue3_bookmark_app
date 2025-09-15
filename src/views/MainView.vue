@@ -21,6 +21,6 @@ import CategoryList from '@/components/CategoryList.vue'
 }
 
 .nav {
-  min-width: 400px;
+  min-width: 320px;
 }
 </style>
