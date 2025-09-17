@@ -7,7 +7,7 @@ export const useProfileStore = defineStore('profile', () => {
   const profile = ref<IProfile>()
 
   async function getProfile() {
-    const { data } = await http.get<IProfile>(API_ROUTES.profile)
+    const { data } = await http.get<IProfile>(API_ROUTES.auth.profile)
     profile.value = data
   }
 
