@@ -2,6 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { API_ROUTES, http } from '@/api'
 import type { ILoginResponse } from '@/interfaces/auth.interface'
+import { setAxiosInterceptors } from '@/api'
 
 const TOKEN_STORE_KEY = 'token-store'
 
@@ -21,6 +22,7 @@ export const useAuthStore = defineStore('auth', () => {
   function clearToken() {
     token.value = ''
     localStorage.removeItem(TOKEN_STORE_KEY)
+    setAxiosInterceptors()
   }
 
   const getToken = computed(() => token.value)

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AuthView from '@/views/AuthView.vue'
-import { useAuthStore } from './store/auth.store'
+import { useAuthStore } from '@/store/auth.store'
+import { setAxiosInterceptors } from '@/api'
 
 export const router = createRouter({
   routes: [
@@ -17,6 +18,9 @@ export const router = createRouter({
     {
       path: '/main',
       component: () => import('@/views/MainView.vue'),
+      beforeEnter: () => {
+        setAxiosInterceptors()
+      },
       children: [
         {
           path: '',
