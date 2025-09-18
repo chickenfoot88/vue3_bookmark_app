@@ -10,7 +10,11 @@ export const API_ROUTES = {
     login: '/auth/login',
     profile: '/auth/profile',
   },
-  bookmarks: (id: number) => `/categories/${id}/bookmarks`,
+  bookmarks: {
+    get: (id: number) => `/categories/${id}/bookmarks`,
+    delete: (id: number) => `/bookmarks/${id}`,
+    create: `bookmarks`,
+  },
 }
 
 export const http: AxiosInstance = axios.create({
