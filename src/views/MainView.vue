@@ -4,7 +4,7 @@
       <ProfileAvatar />
       <CategoryList />
     </nav>
-    <main><RouterView /></main>
+    <main class="main"><RouterView /></main>
   </div>
 </template>
 <script setup lang="ts">
@@ -22,5 +22,9 @@ import CategoryList from '@/components/CategoryList.vue'
 
 .nav {
   min-width: 320px;
+}
+
+.main {
+  width: 100%;
 }
 </style>

@@ -1,4 +1,6 @@
-<template>{{ category?.name }}</template>
+<template>
+  <CategoryHeader v-if="category" :category />
+</template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
@@ -6,7 +8,7 @@ import { useRoute } from 'vue-router'
 import { useCategoryStore } from '@/store/category.store'
 import { watch } from 'vue'
 import type { ICategory } from '@/interfaces/category.interface'
-import { useBookmarkStore } from '@/store/bookmark.store'
+import CategoryHeader from '@/components/CategoryHeader.vue'
 const route = useRoute()
 const categoryStore = useCategoryStore()
 const category = ref<ICategory>()

@@ -20,6 +20,21 @@ export const useCategoryStore = defineStore('category', () => {
     categories.value.push(data)
   }
 
+  async function updateCategory(name: string, alias: string, id: number) {
+    await http.put<ICategory>(`${API_ROUTES.categories}/${id}`, {
+      name,
+      alias,
+    })
+
+    const editedCategory = categories.value.find((category) => category.id === id)
+    if (editedCategory) editedCategory.name = name
+  }
+
+  async function deleteCategory(id: number) {
+    await http.delete(`${API_ROUTES.categories}/${id}`)
+    categories.value = categories.value.filter((category) => category.id !== id)
+  }
+
   function getCategoryByAlias(alias: string | string[]): ICategory | undefined {
     if (typeof alias === 'string') {
       return categories.value.find((category) => category.alias === alias)
@@ -28,5 +43,12 @@ export const useCategoryStore = defineStore('category', () => {
     return
   }
 
-  return { categories, getCategories, createCategory, getCategoryByAlias }
+  return {
+    categories,
+    getCategories,
+    createCategory,
+    updateCategory,
+    getCategoryByAlias,
+    deleteCategory,
+  }
 })
