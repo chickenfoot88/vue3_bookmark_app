@@ -1,5 +1,12 @@
 <template>
   <CategoryHeader v-if="category" :category />
+  <div class="bookmark-list">
+    <BookmarkCard
+      v-for="bookmark in bookmarkStore.bookmarks"
+      v-bind="bookmark"
+      :key="bookmark.id"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -9,6 +16,8 @@ import { useCategoryStore } from '@/store/category.store'
 import { watch } from 'vue'
 import type { ICategory } from '@/interfaces/category.interface'
 import CategoryHeader from '@/components/CategoryHeader.vue'
+import BookmarkCard from '@/components/BookmarkCard.vue'
+import { useBookmarkStore } from '@/store/bookmark.store'
 const route = useRoute()
 const categoryStore = useCategoryStore()
 const category = ref<ICategory>()
@@ -36,4 +45,10 @@ function getCategory(alias: string | string[]) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.bookmark-list {
+  display: grid;
+  grid-template: repeat(3, 1fr);
+  gap: 24px;
+}
+</style>
