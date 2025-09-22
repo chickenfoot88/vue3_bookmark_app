@@ -68,6 +68,10 @@ async function deleteCategory(id: number) {
   gap: 10px;
 }
 
+.category-header-text {
+  font-size: 20px;
+}
+
 .category-header-text button:first-of-type {
   margin-left: auto;
 }
