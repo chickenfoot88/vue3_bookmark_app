@@ -25,7 +25,7 @@
 import { ref } from 'vue'
 import type { IBookmark } from '@/interfaces/bookmark.interface'
 import { useBookmarkStore } from '@/store/bookmark.store'
-import IconTrashWhite from '@/icons/IconLinkWhite.vue'
+import IconTrashWhite from '@/icons/IconTrashWhite.vue'
 import IconLinkWhite from '@/icons/IconLinkWhite.vue'
 import ButtonIconBig from '@/components/ButtonIconBig.vue'
 import PopupConfirm from '@/components/PopupConfirm.vue'
@@ -69,6 +69,7 @@ function deleteBookmark() {
   font-weight: 500;
 }
 .bookmark-card-footer {
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
 }
