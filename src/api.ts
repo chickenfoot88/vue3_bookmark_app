@@ -13,7 +13,7 @@ export const API_ROUTES = {
   bookmarks: {
     get: (id: number) => `/categories/${id}/bookmarks`,
     delete: (id: number) => `/bookmarks/${id}`,
-    create: `bookmarks`,
+    create: `/bookmarks`,
   },
 }
 

@@ -7,7 +7,7 @@
       v-bind="bookmark"
       :key="bookmark.id"
     />
-    <BookmarkSort :activeSort="activeSort" @sort="sortBookmarks"></BookmarkSort>
+    <BookmarkAdd v-if="category" :categoryId="category.id" />
   </div>
 </template>
 
@@ -22,13 +22,12 @@ import BookmarkCard from '@/components/BookmarkCard.vue'
 import { useBookmarkStore } from '@/store/bookmark.store'
 import BookmarkSort from '@/components/BookmarkSort.vue'
 import type { ISortOption } from '@/interfaces/bookmark.sort.interface'
-import { SORT_OPTIONS } from '@/constants'
+import BookmarkAdd from '@/components/BookmarkAdd.vue'
 
 const route = useRoute()
 const categoryStore = useCategoryStore()
 const category = ref<ICategory>()
 const bookmarkStore = useBookmarkStore()
-const activeSort = ref<ISortOption['option']>(SORT_OPTIONS[0].option)
 
 onMounted(() => {
   getCategory(route.params.alias)
